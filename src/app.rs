@@ -3,19 +3,15 @@
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
 pub struct TemplateApp {
     // Example stuff:
-    label: String,
-
-    // this how you opt-out of serialization of a member
     #[serde(skip)]
-    value: f32,
+    current_dir: String,
 }
 
 impl Default for TemplateApp {
     fn default() -> Self {
         Self {
             // Example stuff:
-            label: "Hello World!".to_owned(),
-            value: 2.7,
+            current_dir: "".into(),
         }
     }
 }
@@ -45,7 +41,7 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     /// Put your widgets into a `SidePanel`, `TopPanel`, `CentralPanel`, `Window` or `Area`.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        let Self { label, value } = self;
+        let Self { current_dir} = self;
 
         // Examples of how to create different panels and windows.
         // Pick whichever suits you.
@@ -65,16 +61,14 @@ impl eframe::App for TemplateApp {
         });
 
         egui::SidePanel::left("side_panel").show(ctx, |ui| {
-            ui.heading("Side Panel");
+            ui.heading("EEup Scale");
 
-            ui.horizontal(|ui| {
-                ui.label("Write something: ");
-                ui.text_edit_singleline(label);
-            });
+            ui.label(format!("{}", current_dir));
 
-            ui.add(egui::Slider::new(value, 0.0..=10.0).text("value"));
-            if ui.button("Increment").clicked() {
-                *value += 1.0;
+            if ui.button("Upscale image").clicked() {
+                let current_dir_result = std::env::current_dir().unwrap();
+                let current_dir_string = current_dir_result.into_os_string().into_string().unwrap();
+                *current_dir = current_dir_string;
             }
 
             ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {

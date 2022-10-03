@@ -7,16 +7,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in library 'eframe_template'",
+            "name": "Debug unit tests in library 'eeup_scale'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
                     "--lib",
-                    "--package=eframe_template"
+                    "--package=eeup_scale"
                 ],
                 "filter": {
-                    "name": "eframe_template",
+                    "name": "eeup_scale",
                     "kind": "lib"
                 }
             },
@@ -26,15 +26,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'eframe_template'",
+            "name": "Debug executable 'eeup_scale'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=eframe_template",
-                    "--package=eframe_template"
+                    "--bin=eeup_scale",
+                    "--package=eeup_scale"
                 ],
                 "filter": {
-                    "name": "eframe_template",
+                    "name": "eeup_scale",
                     "kind": "bin"
                 }
             },
@@ -44,16 +44,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'eframe_template'",
+            "name": "Debug unit tests in executable 'eeup_scale'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=eframe_template",
-                    "--package=eframe_template"
+                    "--bin=eeup_scale",
+                    "--package=eeup_scale"
                 ],
                 "filter": {
-                    "name": "eframe_template",
+                    "name": "eeup_scale",
                     "kind": "bin"
                 }
             },
